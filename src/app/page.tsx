@@ -1,6 +1,8 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
+import p1Pic from './p1.png';
+import p2Pic from './p2.png';
 
 const cards = Array.from({ length: 52 }, (_, i) => {
   const value = (i % 13) + 1;
@@ -83,6 +85,7 @@ export default function Home() {
         <div className="w-1/3 bg-blue-500">
           <div>
             YOU - {activePlayer === 0 ? 'active' : 'not active'}
+            <Image src={p1Pic} alt="Picture of the author" />
             {battle >= 0 && activePlayer === 0 && (
               <div>
                 Battle: HP: {battle} -{' '}
@@ -98,6 +101,22 @@ export default function Home() {
             )}
           </div>
           <div>Monster Energy: {p1.length} cards</div>
+
+          {p1.map((card, index) => {
+            return (
+              <div key={index} className={`transform`}>
+                <div
+                  className={`bg-${'blue'}-500 ring-white ring-1 w-32 h-48 flex items-center justify-center rounded-lg shadow-lg`}
+                  style={{
+                    position: 'absolute',
+                    left: `${index * 10}px`,
+                  }}
+                >
+                  {/* <p className="text-white text-4xl font-bold text-center"></p> */}
+                </div>
+              </div>
+            );
+          })}
         </div>
         <div className="w-1/3 flex flex-col p-11">
           {/* {stack[0] === 0 ? 'Rest' : 'Fight'} */}
@@ -157,8 +176,24 @@ export default function Home() {
           )}
           <div className="">
             Them - {activePlayer === 1 ? 'active' : 'not active'}
+            <Image src={p2Pic} alt="Picture of the author" />
           </div>
           Monster Energy: {p2.length} cards
+          {p2.map((card, index) => {
+            return (
+              <div key={index} className={`transform`}>
+                <div
+                  className={`bg-${'red'}-500 ring-white ring-1 w-32 h-48 flex items-center justify-center rounded-lg shadow-lg`}
+                  style={{
+                    position: 'absolute',
+                    left: `${index * 10}px`,
+                  }}
+                >
+                  {/* <p className="text-white text-4xl font-bold text-center"></p> */}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
