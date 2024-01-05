@@ -34,6 +34,9 @@ export default function Home() {
         <button
           className="bg-red-500 text-white font-bold py-2 px-4 rounded"
           onClick={() => {
+            if (p1.length === 0 || p2.length) {
+              return;
+            }
             if (battle === 0) {
               // battle over
               // give all the stack to the other player
